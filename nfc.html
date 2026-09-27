@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS NFC™ Smart Acrylic Stand &amp; Canva Studio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#06080D',
+              surface: '#0B0F19',
+              card: '#121826',
+              border: '#1F293D',
+              cyan: '#00F2FE',
+              cyanDark: '#0496A0',
+              blue: '#4FACFE',
+              emerald: '#05FFA1',
+              amber: '#FFB800',
+              purple: '#9B51E0'
+            }
+          },
+          fontFamily: {
+            arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'neon-cyan': '0 0 25px rgba(0, 242, 254, 0.45)',
+            'neon-glow': '0 0 40px rgba(0, 242, 254, 0.25)',
+            'acrylic-depth': '0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #06080D;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1F293D;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00F2FE;
+    }
+
+    /* Ambient Lighting and Grid Background */
+    .bg-cyber-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    /* 3D Acrylic Stand Refraction & Depth */
+    .acrylic-perspective {
+      perspective: 1200px;
+    }
+    .acrylic-stand-body {
+      transform-style: preserve-3d;
+      transform: rotateX(14deg) rotateY(-6deg) rotateZ(1deg);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+    }
+    .acrylic-stand-body:hover {
+      transform: rotateX(6deg) rotateY(-2deg) rotateZ(0deg);
+      box-shadow: 0 35px 80px -10px rgba(0, 242, 254, 0.35);
+    }
+
+    /* Laser Etched Gloss Reflection */
+    .laser-gloss-reflection {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(0, 242, 254, 0.15) 100%);
+    }
+
+    /* Induction Pulsing Ring */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.25; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
+    .animate-nfc-pulse {
+      animation: pulse-ring 2.8s infinite ease-in-out;
+    }
+
+    /* Tap Ripple Animation */
+    @keyframes ripple-wave {
+      0% { transform: scale(0.6); opacity: 1; }
+      100% { transform: scale(3.2); opacity: 0; }
+    }
+    .tap-ripple-active {
+      animation: ripple-wave 1s cubic-bezier(0, 0.2, 0.8, 1) forwards;
+    }
+
+    /* Phone Tap Simulation Trajectory */
+    .phone-simulator-inactive {
+      transform: translateY(-80px) rotate(15deg) scale(0.9);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .phone-simulator-tap {
+      transform: translateY(18px) rotate(-3deg) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Live Visual In-Place Editor Outline Highlight */
+    .visual-edit-mode [contenteditable="true"] {
+      outline: 2px dashed #FFB800 !important;
+      outline-offset: 3px;
+      border-radius: 4px;
+      cursor: text !important;
+      transition: all 0.2s ease;
+      background-color: rgba(255, 184, 0, 0.08) !important;
+    }
+    .visual-edit-mode [contenteditable="true"]:hover {
+      outline-color: #00F2FE !important;
+      background-color: rgba(0, 242, 254, 0.15) !important;
+    }
+    .visual-edit-mode [contenteditable="true"]:focus {
+      outline: 2px solid #00F2FE !important;
+      background-color: rgba(0, 242, 254, 0.25) !important;
+    }
+
+    /* 16:9 Canva Canvas Constraint */
+    .canva-presentation-frame {
+      max-width: 1400px;
+      margin: 15px auto;
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      border-radius: 20px;
+      box-shadow: 0 0 60px rgba(0, 242, 254, 0.15);
+    }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:"Plus Jakarta Sans", sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.inset-3{inset:0.75rem}.inset-6{inset:1.5rem}.-bottom-7{bottom:-1.75rem}.bottom-10{bottom:2.5rem}.bottom-6{bottom:1.5rem}.left-1\/2{left:50%}.left-1\/4{left:25%}.right-0{right:0px}.right-1\/4{right:25%}.right-6{right:1.5rem}.top-0{top:0px}.top-2\.5{top:0.625rem}.-z-10{z-index:-10}.z-30{z-index:30}.z-40{z-index:40}.z-50{z-index:50}.col-span-1{grid-column:span 1 / span 1}.mx-auto{margin-left:auto;margin-right:auto}.my-auto{margin-top:auto;margin-bottom:auto}.mb-1{margin-bottom:0.25rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-1\.5{height:0.375rem}.h-10{height:2.5rem}.h-12{height:3rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-2\.5{height:0.625rem}.h-24{height:6rem}.h-3{height:0.75rem}.h-3\.5{height:0.875rem}.h-36{height:9rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-\[400px\]{height:400px}.h-\[450px\]{height:450px}.h-\[500px\]{height:500px}.h-\[580px\]{height:580px}.h-full{height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-1\.5{width:0.375rem}.w-10{width:2.5rem}.w-12{width:3rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-2\.5{width:0.625rem}.w-24{width:6rem}.w-3{width:0.75rem}.w-3\.5{width:0.875rem}.w-36{width:9rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-\[1px\]{width:1px}.w-\[280px\]{width:280px}.w-\[290px\]{width:290px}.w-\[450px\]{width:450px}.w-\[500px\]{width:500px}.w-\[90\%\]{width:90%}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-7xl{max-width:80rem}.max-w-lg{max-width:32rem}.flex-1{flex:1 1 0%}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-24{--tw-translate-y:6rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-28{--tw-translate-y:7rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-0{--tw-translate-y:0px;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes bounce{0%, 100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(0.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,0.2,1)}}.animate-bounce{animation:bounce 1s infinite}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.appearance-none{-webkit-appearance:none;appearance:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.overflow-x-hidden{overflow-x:hidden}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-\[42px\]{border-radius:42px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-\[6px\]{border-width:6px}.border-b{border-bottom-width:1px}.border-l{border-left-width:1px}.border-r{border-right-width:1px}.border-t{border-top-width:1px}.border-amber-500\/40{border-color:rgb(245 158 11 / 0.4)}.border-amber-500\/60{border-color:rgb(245 158 11 / 0.6)}.border-blue-500\/40{border-color:rgb(59 130 246 / 0.4)}.border-brand-blue\/30{border-color:rgb(79 172 254 / 0.3)}.border-brand-border{--tw-border-opacity:1;border-color:rgb(31 41 61 / var(--tw-border-opacity, 1))}.border-brand-border\/60{border-color:rgb(31 41 61 / 0.6)}.border-brand-cyan{--tw-border-opacity:1;border-color:rgb(0 242 254 / var(--tw-border-opacity, 1))}.border-brand-cyan\/30{border-color:rgb(0 242 254 / 0.3)}.border-brand-cyan\/40{border-color:rgb(0 242 254 / 0.4)}.border-brand-cyan\/60{border-color:rgb(0 242 254 / 0.6)}.border-brand-emerald\/30{border-color:rgb(5 255 161 / 0.3)}.border-cyan-500\/20{border-color:rgb(6 182 212 / 0.2)}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.border-white\/40{border-color:rgb(255 255 255 / 0.4)}.border-white\/\[0\.06\]{border-color:rgb(255 255 255 / 0.06)}.border-white\/\[0\.08\]{border-color:rgb(255 255 255 / 0.08)}.bg-\[\#00F2FE\]{--tw-bg-opacity:1;background-color:rgb(0 242 254 / var(--tw-bg-opacity, 1))}.bg-\[\#05FFA1\]{--tw-bg-opacity:1;background-color:rgb(5 255 161 / var(--tw-bg-opacity, 1))}.bg-\[\#9B51E0\]{--tw-bg-opacity:1;background-color:rgb(155 81 224 / var(--tw-bg-opacity, 1))}.bg-\[\#FFB800\]{--tw-bg-opacity:1;background-color:rgb(255 184 0 / var(--tw-bg-opacity, 1))}.bg-amber-400{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11 / var(--tw-bg-opacity, 1))}.bg-amber-500\/15{background-color:rgb(245 158 11 / 0.15)}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-black\/40{background-color:rgb(0 0 0 / 0.4)}.bg-black\/80{background-color:rgb(0 0 0 / 0.8)}.bg-black\/85{background-color:rgb(0 0 0 / 0.85)}.bg-blue-900\/60{background-color:rgb(30 58 138 / 0.6)}.bg-brand-black{--tw-bg-opacity:1;background-color:rgb(6 8 13 / var(--tw-bg-opacity, 1))}.bg-brand-black\/80{background-color:rgb(6 8 13 / 0.8)}.bg-brand-blue\/10{background-color:rgb(79 172 254 / 0.1)}.bg-brand-card{--tw-bg-opacity:1;background-color:rgb(18 24 38 / var(--tw-bg-opacity, 1))}.bg-brand-cyan{--tw-bg-opacity:1;background-color:rgb(0 242 254 / var(--tw-bg-opacity, 1))}.bg-brand-cyan\/10{background-color:rgb(0 242 254 / 0.1)}.bg-brand-cyan\/15{background-color:rgb(0 242 254 / 0.15)}.bg-brand-cyan\/20{background-color:rgb(0 242 254 / 0.2)}.bg-brand-cyan\/40{background-color:rgb(0 242 254 / 0.4)}.bg-brand-emerald{--tw-bg-opacity:1;background-color:rgb(5 255 161 / var(--tw-bg-opacity, 1))}.bg-brand-emerald\/10{background-color:rgb(5 255 161 / 0.1)}.bg-brand-surface{--tw-bg-opacity:1;background-color:rgb(11 15 25 / var(--tw-bg-opacity, 1))}.bg-brand-surface\/95{background-color:rgb(11 15 25 / 0.95)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-white\/20{background-color:rgb(255 255 255 / 0.2)}.bg-white\/\[0\.02\]{background-color:rgb(255 255 255 / 0.02)}.bg-white\/\[0\.03\]{background-color:rgb(255 255 255 / 0.03)}.bg-white\/\[0\.04\]{background-color:rgb(255 255 255 / 0.04)}.bg-white\/\[0\.05\]{background-color:rgb(255 255 255 / 0.05)}.bg-white\/\[0\.06\]{background-color:rgb(255 255 255 / 0.06)}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-t{background-image:linear-gradient(to top, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-brand-card\/90{--tw-gradient-from:rgb(18 24 38 / 0.9) var(--tw-gradient-from-position);--tw-gradient-to:rgb(18 24 38 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-brand-cyan{--tw-gradient-from:#00F2FE var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 242 254 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-slate-900{--tw-gradient-from:#0f172a var(--tw-gradient-from-position);--tw-gradient-to:rgb(15 23 42 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-brand-blue{--tw-gradient-to:#4FACFE var(--tw-gradient-to-position)}.to-brand-surface\/90{--tw-gradient-to:rgb(11 15 25 / 0.9) var(--tw-gradient-to-position)}.to-indigo-600{--tw-gradient-to:#4f46e5 var(--tw-gradient-to-position)}.to-slate-800{--tw-gradient-to:#1e293b var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.p-1{padding:0.25rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-3{padding-bottom:0.75rem}.pb-4{padding-bottom:1rem}.pt-2{padding-top:0.5rem}.pt-4{padding-top:1rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.text-right{text-align:right}.font-arabic{font-family:"IBM Plex Sans Arabic", sans-serif}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.font-sans{font-family:"Plus Jakarta Sans", sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-widest{letter-spacing:0.1em}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-brand-blue{--tw-text-opacity:1;color:rgb(79 172 254 / var(--tw-text-opacity, 1))}.text-brand-cyan{--tw-text-opacity:1;color:rgb(0 242 254 / var(--tw-text-opacity, 1))}.text-brand-emerald{--tw-text-opacity:1;color:rgb(5 255 161 / var(--tw-text-opacity, 1))}.text-slate-100{--tw-text-opacity:1;color:rgb(241 245 249 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.accent-brand-cyan{accent-color:#00F2FE}.opacity-0{opacity:0}.opacity-25{opacity:0.25}.opacity-40{opacity:0.4}.opacity-75{opacity:0.75}.opacity-100{opacity:1}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-acrylic-depth{--tw-shadow:0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);--tw-shadow-colored:0 25px 60px -15px var(--tw-shadow-color), 0 0 0 1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-neon-cyan{--tw-shadow:0 0 25px rgba(0, 242, 254, 0.45);--tw-shadow-colored:0 0 25px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-neon-glow{--tw-shadow:0 0 40px rgba(0, 242, 254, 0.25);--tw-shadow-colored:0 0 40px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.blur-\[130px\]{--tw-blur:blur(130px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-\[140px\]{--tw-blur:blur(140px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-xl{--tw-blur:blur(24px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-2xl{--tw-backdrop-blur:blur(40px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.selection\:bg-brand-cyan *::selection{--tw-bg-opacity:1;background-color:rgb(0 242 254 / var(--tw-bg-opacity, 1))}.selection\:text-black *::selection{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.selection\:bg-brand-cyan::selection{--tw-bg-opacity:1;background-color:rgb(0 242 254 / var(--tw-bg-opacity, 1))}.selection\:text-black::selection{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.hover\:border-brand-cyan\/40:hover{border-color:rgb(0 242 254 / 0.4)}.hover\:bg-amber-500\/25:hover{background-color:rgb(245 158 11 / 0.25)}.hover\:bg-brand-cyan:hover{--tw-bg-opacity:1;background-color:rgb(0 242 254 / var(--tw-bg-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.hover\:bg-white\/10:hover{background-color:rgb(255 255 255 / 0.1)}.hover\:bg-white\/20:hover{background-color:rgb(255 255 255 / 0.2)}.hover\:bg-white\/\[0\.12\]:hover{background-color:rgb(255 255 255 / 0.12)}.hover\:text-black:hover{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.hover\:opacity-95:hover{opacity:0.95}.hover\:shadow-neon-cyan:hover{--tw-shadow:0 0 25px rgba(0, 242, 254, 0.45);--tw-shadow-colored:0 0 25px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:border-brand-cyan:focus{--tw-border-opacity:1;border-color:rgb(0 242 254 / var(--tw-border-opacity, 1))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:col-span-2{grid-column:span 2 / span 2}.sm\:h-\[460px\]{height:460px}.sm\:w-\[320px\]{width:320px}.sm\:w-\[340px\]{width:340px}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:gap-3{gap:0.75rem}.sm\:p-10{padding:2.5rem}.sm\:p-8{padding:2rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:py-12{padding-top:3rem;padding-bottom:3rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 768px){.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
+<body class="bg-brand-black text-slate-100 font-arabic selection:bg-brand-cyan selection:text-black min-h-screen relative overflow-x-hidden">
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-brand-cyan/10 blur-[130px] rounded-full pointer-events-none -z-10"></div>
+  <div class="fixed bottom-10 right-1/4 w-[450px] h-[450px] bg-brand-blue/10 blur-[140px] rounded-full pointer-events-none -z-10"></div>
+  <div class="fixed inset-0 bg-cyber-grid pointer-events-none opacity-40 -z-10"></div>
+
+  <!-- Top Sticky Navigation & Quick Actions -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-brand-black/80 border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Project Info -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-cyan to-brand-blue flex items-center justify-center shadow-neon-cyan">
+          <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-sans font-extrabold text-lg text-white tracking-wide">NEXUS<span class="text-brand-cyan">.NFC</span></span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">v3.4 CANVA READY</span>
+          </div>
+          <p class="text-xs text-slate-400 font-medium" data-key="nav_subtitle">استاند أكريليك ذكي للمطاعم والمقاهي السعودية</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons & Controllers -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+        
+        <!-- Live Visual In-Place Editor Button -->
+        <button id="toggleEditModeBtn" onclick="toggleLiveVisualEditor()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 active:scale-95 shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+          </svg>
+          <span id="editModeBtnLabel">وضع التحرير المباشر (تعديل أي نص)</span>
+        </button>
+
+        <!-- Customizer Studio Modal Trigger -->
+        <button onclick="openCustomizerModal()" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/10 active:scale-95">
+          <svg class="w-4 h-4 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+          </svg>
+          <span data-key="btn_customize">تخصيص الهوية</span>
+        </button>
+
+        <!-- Canva Export Studio Modal Trigger -->
+        <button onclick="openCanvaModal()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all bg-gradient-to-r from-brand-cyan to-brand-blue text-black hover:opacity-95 active:scale-95 shadow-neon-cyan">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path>
+          </svg>
+          <span data-key="btn_canva_embed">تضمين وتصدير في كانفا</span>
+        </button>
+
+        <!-- Language Switcher (AR/EN) -->
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 border border-white/10 transition-all">
+          <span id="langFlag">🇸🇦</span>
+          <span id="langText">English</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Floating Live Visual Editor Toolbar -->
+  <div id="visualEditorBar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-28 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 px-5 py-3 rounded-2xl bg-brand-surface/95 border border-amber-500/60 shadow-2xl backdrop-blur-xl">
+    <div class="flex items-center gap-2 text-amber-400 font-bold text-xs sm:text-sm">
+      <span class="relative flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+      </span>
+      <span>وضع التعديل مفعل: اضغط على أي كلمة أو رقم لتغييره مباشرة!</span>
+    </div>
+    <div class="h-5 w-[1px] bg-white/20"></div>
+    <button onclick="saveAndDownloadCustomHTML()" class="px-3 py-1.5 rounded-xl bg-brand-cyan text-black font-extrabold text-xs hover:bg-white transition-all flex items-center gap-1.5 shadow-neon-cyan active:scale-95">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+      </svg>
+      <span>حفظ وتحميل الملف المعدّل</span>
+    </button>
+    <button onclick="restoreOriginalTexts()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 text-xs font-medium transition-all">
+      استعادة الأصلي
+    </button>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform transition-all duration-300 flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-brand-surface/95 border border-brand-cyan/40 shadow-neon-cyan backdrop-blur-xl translate-y-0 opacity-100 pointer-events-auto">
+    <div class="w-8 h-8 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+      </svg>
+    </div>
+    <div>
+      <h4 id="toastTitle" class="text-sm font-bold text-white">تم نسخ كود الويب كاملاً!</h4>
+      <p id="toastMessage" class="text-xs text-slate-300">يمكنك الآن لصقه وتضمينه في كانفا أو استضافتك</p>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main id="mainFrame" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+    <!-- Hero Title & Value Proposition -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-bold mb-4">
+        <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+        <span data-key="hero_badge">الجيل الجديد من تجربة الضيافة الذكية في السعودية</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4" data-key="hero_title">
+        استاند طاولة أكريليكي ذكي بنظام <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">NFC &amp; QR Code</span>
+      </h1>
+      <p class="text-slate-300 text-sm sm:text-base leading-relaxed" data-key="hero_desc">
+        ارتقِ بتجربة عملاء مطعمك أو مقهاك بدون تطبيقات أو تسجيل دخول. لمسة واحدة بالجوال تفتح قائمة الطعام، تطلب فوراً، وترسل الفاتورة لنظام الكاشير (Foodics / Geidea) وخدمات الدفع السريع مدى و Apple Pay.
+      </p>
+    </div>
+
+    <!-- Center Interactive Simulator: 3D Acrylic Stand + NFC Tap Action -->
+    <div class="relative bg-gradient-to-b from-brand-card/90 to-brand-surface/90 border border-brand-border rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden mb-16">
+      
+      <!-- Top Action Controls inside the simulator -->
+      <div class="flex items-center justify-between mb-8 pb-4 border-b border-brand-border/60 flex-wrap gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-brand-emerald animate-ping"></span>
+          <span class="text-xs font-bold text-white tracking-wide uppercase font-sans">Hardware Simulator • Live Interaction</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <!-- Simulate Tap Button -->
+          <button id="simulateTapBtn" onclick="runNfcTapSimulation()" class="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-brand-cyan to-brand-blue text-black font-extrabold text-xs sm:text-sm hover:shadow-neon-cyan transition-all active:scale-95">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+            <span data-key="btn_simulate_tap">محاكاة لمس الجوال للاستاند (Tap NFC)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Split Showcase: 3D Acrylic Desk Stand (Left/Center) & Virtual Phone (Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Acrylic Stand 3D Visualizer (Col 7) -->
+        <div class="lg:col-span-7 flex flex-col items-center justify-center acrylic-perspective py-6">
+          
+          <div id="acrylicStand3D" class="acrylic-stand-body relative w-[280px] sm:w-[340px] h-[400px] sm:h-[460px] rounded-3xl laser-gloss-reflection border border-white/20 p-6 flex flex-col justify-between shadow-acrylic-depth backdrop-blur-2xl" style="">
+            
+            <!-- Acrylic Beveled Edge Lighting Highlights -->
+            <div class="absolute inset-0 rounded-3xl border-t border-l border-white/40 pointer-events-none"></div>
+            <div class="absolute inset-0 rounded-3xl border-b border-r border-cyan-500/20 pointer-events-none"></div>
+
+            <!-- Top Header on Stand (Restaurant Name & Branding) -->
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+              <div class="flex items-center gap-2.5">
+                <div id="standLogoIcon" class="w-8 h-8 rounded-lg bg-brand-cyan/20 border border-brand-cyan/40 flex items-center justify-center text-brand-cyan">
+                  ☕
+                </div>
+                <div>
+                  <h3 id="standRestaurantName" class="font-bold text-white text-base tracking-wide" contenteditable="false">NOIR Speciality Coffee</h3>
+                  <p id="standBranchText" class="text-[11px] text-slate-300" contenteditable="false">فرع الرياض - النخيل</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span id="standTableBadge" class="px-2.5 py-1 rounded-md text-[11px] font-black bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/40" contenteditable="false">
+                  طاولة 04
+                </span>
+              </div>
+            </div>
+
+            <!-- Central Laser Etched NFC Induction Core -->
+            <div class="relative flex flex-col items-center justify-center my-auto py-6">
+              
+              <!-- Animated Glowing Induction Rings -->
+              <div class="relative w-36 h-36 flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full border-2 border-brand-cyan/40 animate-nfc-pulse"></div>
+                <div class="absolute inset-3 rounded-full border border-brand-blue/30 animate-ping opacity-25"></div>
+                <div class="absolute inset-6 rounded-full bg-brand-cyan/10 backdrop-blur-md border border-brand-cyan/60 flex items-center justify-center shadow-neon-glow">
+                  <!-- NFC Wave Wireless Icon -->
+                  <svg class="w-12 h-12 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.393 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                  </svg>
+                </div>
+                <!-- Dynamic Ripple Shockwave (Triggered on tap) -->
+                <div id="tapRippleRing" class="absolute w-24 h-24 rounded-full border-2 border-brand-cyan opacity-0 pointer-events-none tap-ripple-active"></div>
+              </div>
+
+              <!-- Instructional Etched Text -->
+              <div class="mt-4 text-center">
+                <h4 id="standTapInstruction" class="text-sm font-bold text-white tracking-wide" contenteditable="false">المس بجوالك هنا</h4>
+                <p id="standTapSubtext" class="text-xs text-slate-300 mt-0.5" contenteditable="false">أو امسح رمز الاستجابة السريعة (QR)</p>
+              </div>
+
+            </div>
+
+            <!-- Bottom Stand Foot: Backup QR Code & Security Stamp -->
+            <div class="border-t border-white/10 pt-4 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <!-- Mini Crisp SVG QR Code -->
+                <div class="w-10 h-10 rounded-md bg-white p-1 flex items-center justify-center">
+                  <svg class="w-full h-full text-black" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 0h4v4h-4v-4zm-4-2h2v2h-2v-2zm-2 2h2v4h-2v-4zm4 4h4v2h-4v-2zm2-2h2v2h-2v-2z"></path>
+                  </svg>
+                </div>
+                <div class="text-[10px] text-slate-300">
+                  <p class="font-bold text-white">NXP NTAG424</p>
+                  <p>تشفير بنكي مشفر</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5 px-2 py-1 rounded bg-black/40 border border-white/10 text-[10px] text-slate-300 font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-emerald"></span>
+                <span>DESK-STAND-04</span>
+              </div>
+            </div>
+
+            <!-- Realistic Solid Acrylic Stand Base Mount -->
+            <div class="absolute -bottom-7 left-1/2 -translate-x-1/2 w-[90%] h-8 bg-gradient-to-t from-slate-900 to-slate-800 rounded-xl border border-white/10 shadow-2xl flex items-center justify-center">
+              <div class="w-24 h-1 rounded-full bg-brand-cyan/40"></div>
+            </div>
+
+          </div>
+
+          <!-- Stand Dimensions & Material Badges -->
+          <div class="mt-12 flex items-center gap-3 text-xs text-slate-400">
+            <span class="px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08]" data-key="spec_acrylic">أكريليك مصبوب عالي الشفافية 4mm</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08]" data-key="spec_uv">طباعة UV فائقة الوضوح مقاومة للخدش</span>
+          </div>
+
+        </div>
+
+        <!-- Virtual Mobile Phone Display (Col 5) -->
+        <div class="lg:col-span-5 flex flex-col items-center">
+          
+          <div class="w-[290px] sm:w-[320px] h-[580px] bg-black rounded-[42px] border-[6px] border-slate-700 shadow-2xl relative overflow-hidden flex flex-col">
+            
+            <!-- Phone Dynamic Island / Speaker Notch -->
+            <div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-24 h-5 bg-slate-900 rounded-full z-30 flex items-center justify-between px-2">
+              <span class="w-2 h-2 rounded-full bg-slate-800"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-900/60 border border-blue-500/40"></span>
+            </div>
+
+            <!-- Simulated Phone Screen States (Idle vs Tapped Menu) -->
+            <div id="phoneScreenIdle" class="flex-1 flex flex-col items-center justify-center p-6 text-center transition-all duration-300 opacity-0 pointer-events-none">
+              <div class="w-16 h-16 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-slate-400 mb-4 animate-bounce">
+                <svg class="w-8 h-8 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h5 class="text-sm font-bold text-white" data-key="phone_idle_title">في انتظار تقريب الجوال...</h5>
+              <p class="text-xs text-slate-400 mt-1" data-key="phone_idle_desc">اضغط على زر "محاكاة لمس الجوال للاستاند" لتشاهد التجربة الحية فوراً</p>
+            </div>
+
+            <!-- Active Menu Interface (Loads instantly upon tap) -->
+            <div id="phoneScreenActive" class="flex-1 flex flex-col bg-brand-surface transition-all duration-300 overflow-y-auto">
+              
+              <!-- Phone Status Header -->
+              <div class="pt-8 pb-3 px-4 bg-brand-card border-b border-brand-border flex items-center justify-between">
+                <div>
+                  <h4 id="phoneRestaurantTitle" class="text-xs font-bold text-white">NOIR Speciality Coffee</h4>
+                  <div class="flex items-center gap-1 text-[10px] text-brand-cyan">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-emerald"></span>
+                    <span id="phoneTableTitle">متصل بالطاولة رقم 04</span>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] bg-brand-cyan/15 text-brand-cyan font-bold">جلسات داخلية</span>
+              </div>
+
+              <!-- Menu Items inside Phone -->
+              <div class="p-3 space-y-2.5 flex-1">
+                
+                <!-- Item 1 -->
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-brand-cyan/40 transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-xl">☕</span>
+                    <div>
+                      <h6 class="text-xs font-bold text-white">فلات وايت (حبوب إثيوبية)</h6>
+                      <p class="text-[10px] text-slate-400">حليب مبخر مع دبل شوت إسبريسو</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-brand-cyan">18 ر.س</span>
+                    <button class="block mt-1 text-[10px] px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-bold hover:bg-brand-cyan hover:text-black">إضافة</button>
+                  </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-brand-cyan/40 transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-xl">🥐</span>
+                    <div>
+                      <h6 class="text-xs font-bold text-white">كرواسون زعتر مع جبنة فيتا</h6>
+                      <p class="text-[10px] text-slate-400">طازج يومياً من مخبزنا</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-brand-cyan">16 ر.س</span>
+                    <button class="block mt-1 text-[10px] px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-bold hover:bg-brand-cyan hover:text-black">إضافة</button>
+                  </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-brand-cyan/40 transition-all">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-xl">🍰</span>
+                    <div>
+                      <h6 class="text-xs font-bold text-white">تشيز كيك سان سيباستيان</h6>
+                      <p class="text-[10px] text-slate-400">مع صوص شوكولاتة بلجيكية</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-bold text-brand-cyan">28 ر.س</span>
+                    <button class="block mt-1 text-[10px] px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-bold hover:bg-brand-cyan hover:text-black">إضافة</button>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Quick Pay Bar at Phone Bottom -->
+              <div class="p-3 bg-brand-card border-t border-brand-border">
+                <div class="flex items-center justify-between text-xs mb-2">
+                  <span class="text-slate-400">الإجمالي التقديري:</span>
+                  <span class="font-bold text-white">62.00 ر.س</span>
+                </div>
+                <button class="w-full py-2 rounded-xl bg-white text-black font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg">
+                  <span>الدفع السريع بـ Apple Pay / مدى</span>
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.89c.65-.82 1.1-1.95.97-3.09-1 .04-2.18.67-2.88 1.48-.6.69-1.13 1.83-.99 2.93 1.12.09 2.25-.5 2.9-1.32z"></path>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Saudi Delivery & POS Cloud Sync Strip -->
+    <div class="mb-16">
+      <div class="text-center mb-6">
+        <h3 class="text-sm font-bold text-slate-300 uppercase tracking-widest" data-key="sync_title">تكامل سحابي متزامن مع منصات المطاعم والكاشير في السعودية</h3>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+        
+        <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-brand-cyan/40 transition-all flex flex-col items-center justify-center text-center">
+          <span class="text-xs font-bold text-white mb-1">Foodics POS</span>
+          <span class="text-[10px] text-brand-emerald flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-emerald"></span>
+            مزامنة مباشرة 100%
+          </span>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-brand-cyan/40 transition-all flex flex-col items-center justify-center text-center">
+          <span class="text-xs font-bold text-white mb-1">Geidea / جيديا</span>
+          <span class="text-[10px] text-brand-emerald flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-emerald"></span>
+            دفع فوري بالطاولة
+          </span>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-brand-cyan/40 transition-all flex flex-col items-center justify-center text-center">
+          <span class="text-xs font-bold text-white mb-1">جاهز / Jahez</span>
+          <span class="text-[10px] text-brand-cyan flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span>
+            تحديث المخزون الحي
+          </span>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-brand-cyan/40 transition-all flex flex-col items-center justify-center text-center">
+          <span class="text-xs font-bold text-white mb-1">هنقرستيشن</span>
+          <span class="text-[10px] text-brand-cyan flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span>
+            تحديث الأصناف (86ed)
+          </span>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-brand-cyan/40 transition-all flex flex-col items-center justify-center text-center">
+          <span class="text-xs font-bold text-white mb-1">ذا شيفز / The Chefz</span>
+          <span class="text-[10px] text-brand-cyan flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span>
+            عروض خاصة بالطاولة
+          </span>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-brand-cyan/40 transition-all flex flex-col items-center justify-center text-center">
+          <span class="text-xs font-bold text-white mb-1">شبكة مدى / Mada</span>
+          <span class="text-[10px] text-brand-emerald flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-emerald"></span>
+            دعم كامل وموثق
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Interactive ROI & Table Turnover Calculator -->
+    <div class="bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-10 mb-16 shadow-2xl">
+      <div class="max-w-2xl mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-emerald/10 border border-brand-emerald/30 text-brand-emerald text-xs font-bold mb-2">
+          <span>حاسبة العائد الاستثماري لمطعمك</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white" data-key="calc_title">كم ستوفر شهرياً باستخدام استاندات NFC الذكية؟</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1" data-key="calc_desc">حرّك المؤشرات لمعرفة التوفير المتوقع في أجور الويترز وزيادة سرعة دوران الطاولات.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Sliders (Col 7) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Slider 1: Table Count -->
+          <div>
+            <div class="flex items-center justify-between text-xs sm:text-sm font-bold mb-2">
+              <span class="text-slate-300" data-key="calc_tables_label">عدد الطاولات في الصالة:</span>
+              <span id="tablesValueDisplay" class="text-brand-cyan font-mono text-base">25 طاولة</span>
+            </div>
+            <input type="range" id="tablesSlider" min="5" max="120" value="25" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-cyan" oninput="updateCalculator()">
+          </div>
+
+          <!-- Slider 2: Average Daily Orders per Table -->
+          <div>
+            <div class="flex items-center justify-between text-xs sm:text-sm font-bold mb-2">
+              <span class="text-slate-300" data-key="calc_orders_label">متوسط عدد الطلبات لكل طاولة يومياً:</span>
+              <span id="ordersValueDisplay" class="text-brand-cyan font-mono text-base">8 طلبات</span>
+            </div>
+            <input type="range" id="ordersSlider" min="2" max="25" value="8" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-cyan" oninput="updateCalculator()">
+          </div>
+
+          <!-- Slider 3: Average Order Ticket (SAR) -->
+          <div>
+            <div class="flex items-center justify-between text-xs sm:text-sm font-bold mb-2">
+              <span class="text-slate-300" data-key="calc_ticket_label">متوسط قيمة الفاتورة (ر.س):</span>
+              <span id="ticketValueDisplay" class="text-brand-cyan font-mono text-base">45 ر.س</span>
+            </div>
+            <input type="range" id="ticketSlider" min="15" max="300" step="5" value="45" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-cyan" oninput="updateCalculator()">
+          </div>
+
+        </div>
+
+        <!-- Calculated Stats Cards (Col 5) -->
+        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <div class="p-5 rounded-2xl bg-white/[0.03] border border-brand-cyan/30 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-16 h-16 bg-brand-cyan/10 rounded-full blur-xl"></div>
+            <span class="text-xs text-slate-400 block mb-1" data-key="stat_saving_money">توفير شهري مباشر في العمالة</span>
+            <div id="statMonthlySavings" class="text-2xl sm:text-3xl font-black text-brand-cyan font-mono">11,250 ر.س</div>
+            <span class="text-[10px] text-slate-500 mt-1 block">بتقليص الحاجة لـ 2 إلى 3 ويترز إضافيين</span>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white/[0.03] border border-brand-emerald/30 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-16 h-16 bg-brand-emerald/10 rounded-full blur-xl"></div>
+            <span class="text-xs text-slate-400 block mb-1" data-key="stat_speed">زيادة سرعة تفريغ الطاولة</span>
+            <div id="statTimeSaved" class="text-2xl sm:text-3xl font-black text-brand-emerald font-mono">+28%</div>
+            <span class="text-[10px] text-slate-500 mt-1 block">توفير 14 دقيقة في كل دورة جلوس</span>
+          </div>
+
+          <div class="col-span-1 sm:col-span-2 p-4 rounded-2xl bg-brand-surface border border-white/10 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">⚡</span>
+              <div>
+                <h5 class="text-xs font-bold text-white" data-key="stat_sales_boost">العائد الإضافي على المبيعات</h5>
+                <p class="text-[11px] text-slate-400" data-key="stat_sales_desc">بسبب سهولة إعادة الطلب الفوري للقهوة والحلى</p>
+              </div>
+            </div>
+            <span id="statExtraSales" class="text-lg font-black text-brand-emerald font-mono">+21,600 ر.س</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Hardware Details & Craftsmanship Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      
+      <div class="p-6 rounded-3xl bg-brand-card border border-brand-border hover:border-brand-cyan/40 transition-all">
+        <div class="w-12 h-12 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+        </div>
+        <h4 class="text-base font-bold text-white mb-2" data-key="feat_chip_title">شريحة NXP NTAG424 DNA</h4>
+        <p class="text-xs text-slate-400 leading-relaxed" data-key="feat_chip_desc">أعلى معايير الأمان والتشفير الديناميكي ضد النسخ والقرصنة، مع عمر تشغيلي يتجاوز 10 سنوات بدون بطاريات.</p>
+      </div>
+
+      <div class="p-6 rounded-3xl bg-brand-card border border-brand-border hover:border-brand-cyan/40 transition-all">
+        <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center text-brand-blue mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+          </svg>
+        </div>
+        <h4 class="text-base font-bold text-white mb-2" data-key="feat_mat_title">أكريليك كريستالي مصبوب</h4>
+        <p class="text-xs text-slate-400 leading-relaxed" data-key="feat_mat_desc">حواف مشطوفة ومصقولة بالألماس مع مقاومة تامة للماء، القهوة الساخنة، ومواد التعقيم الكيميائية اليومية.</p>
+      </div>
+
+      <div class="p-6 rounded-3xl bg-brand-card border border-brand-border hover:border-brand-cyan/40 transition-all">
+        <div class="w-12 h-12 rounded-2xl bg-brand-emerald/10 border border-brand-emerald/30 flex items-center justify-center text-brand-emerald mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <h4 class="text-base font-bold text-white mb-2" data-key="feat_speed_title">استجابة فائقة السرعة &lt; 0.3 ثانية</h4>
+        <p class="text-xs text-slate-400 leading-relaxed" data-key="feat_speed_desc">لا يحتاج العميل لفتح الكاميرا أو تحميل أي تطبيق؛ مجرد ملامسة الهاتف للاستاند تفتح صفحة الطلب فوراً.</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- MODAL 1: Stand Identity Customizer -->
+  <div id="customizerModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-brand-surface border border-brand-border rounded-3xl max-w-lg w-full p-6 shadow-2xl relative">
+      <div class="flex items-center justify-between pb-4 border-b border-brand-border mb-4">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🎨</span>
+          <h3 class="font-bold text-white text-base">تخصيص هوية الاستاند الأكريليكي</h3>
+        </div>
+        <button onclick="closeCustomizerModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-slate-300">✕</button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">اسم المطعم / المقهى:</label>
+          <input type="text" id="inputBrandName" value="NOIR Speciality Coffee" class="w-full px-3 py-2 rounded-xl bg-brand-card border border-white/10 text-white text-sm focus:border-brand-cyan outline-none">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">اسم الفرع / المدينة:</label>
+          <input type="text" id="inputBranchName" value="فرع الرياض - النخيل" class="w-full px-3 py-2 rounded-xl bg-brand-card border border-white/10 text-white text-sm focus:border-brand-cyan outline-none">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">رقم الطاولة:</label>
+            <input type="text" id="inputTableNum" value="طاولة 04" class="w-full px-3 py-2 rounded-xl bg-brand-card border border-white/10 text-white text-sm focus:border-brand-cyan outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">رمز الأيقونة:</label>
+            <select id="inputIconSelect" class="w-full px-3 py-2 rounded-xl bg-brand-card border border-white/10 text-white text-sm focus:border-brand-cyan outline-none">
+              <option value="☕">☕ قهوة ومشروبات</option>
+              <option value="🍔">🍔 برجر ومطاعم</option>
+              <option value="🍕">🍕 بيتزا ومخبوزات</option>
+              <option value="🍰">🍰 حلى ومخبز</option>
+              <option value="✨">✨ فاخر / Fine Dining</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-2">لون توهج النيون (LED Accent):</label>
+          <div class="flex items-center gap-3">
+            <button onclick="setAccentGlow('#00F2FE')" class="w-8 h-8 rounded-full bg-[#00F2FE] border-2 border-white/40"></button>
+            <button onclick="setAccentGlow('#05FFA1')" class="w-8 h-8 rounded-full bg-[#05FFA1] border-2 border-white/40"></button>
+            <button onclick="setAccentGlow('#FFB800')" class="w-8 h-8 rounded-full bg-[#FFB800] border-2 border-white/40"></button>
+            <button onclick="setAccentGlow('#9B51E0')" class="w-8 h-8 rounded-full bg-[#9B51E0] border-2 border-white/40"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-brand-border flex items-center justify-end gap-2">
+        <button onclick="closeCustomizerModal()" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-300 hover:bg-white/10">إلغاء</button>
+        <button onclick="applyCustomizerChanges()" class="px-5 py-2 rounded-xl text-xs font-extrabold bg-brand-cyan text-black hover:bg-white transition-all shadow-neon-cyan">تطبيق فوري على الاستاند</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Canva Embed & Export Studio -->
+  <div id="canvaModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md items-center justify-center p-4 flex">
+    <div class="bg-brand-surface border border-brand-border rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-brand-border mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs">
+            CANVA
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-base">استوديو التضمين والتعديل داخل كانفا (Canva)</h3>
+            <p class="text-xs text-slate-400">طريقتان لتشغيل وتعديل هذا التصميم في عروضك التقديمية</p>
+          </div>
+        </div>
+        <button onclick="closeCanvaModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-slate-300">✕</button>
+      </div>
+
+      <!-- Option 1: Live Interactive Iframe Embed -->
+      <div class="p-5 rounded-2xl bg-white/[0.03] border border-brand-cyan/40 mb-5">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-brand-cyan"></span>
+          <h4 class="text-sm font-bold text-white">الطريقة 1: تضمين تفاعلي حي (يعمل بالضغط والأصوات داخل كانفا)</h4>
+        </div>
+        <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+          1. احفظ هذا الكود وارفعه مجاناً خلال 20 ثانية على أي موقع رفع مثل 
+          <a href="https://tiiny.host" target="_blank" class="text-brand-cyan underline font-bold">tiiny.host</a> أو GitHub Pages.<br>
+          2. داخل كانفا، اذهب إلى <b>تطبيقات (Apps)</b> في القائمة الجانبية واختر <b>تضمين (Embed)</b>.<br>
+          3. ضع رابط موقعك وسيظهر هذا التصميم كاملاً باللمس التفاعلي والتبديل بين العربية والإنجليزية داخل شريحة كانفا!
+        </p>
+        <button onclick="copyFullCodeToClipboard()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-black font-extrabold text-xs flex items-center justify-center gap-2 shadow-neon-cyan hover:opacity-95 active:scale-98">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+          </svg>
+          <span>نسخ كود الـ HTML كاملاً للحافظة بضغطة واحدة</span>
+        </button>
+      </div>
+
+      <!-- Option 2: Full Canva Editable Vector Elements -->
+      <div class="p-5 rounded-2xl bg-white/[0.03] border border-amber-500/40 mb-5">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          <h4 class="text-sm font-bold text-white">الطريقة 2: تحويل التصميم إلى عناصر كانفا أصلية قابلة لتعديل كل حرف وشكل</h4>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          إذا أردت أن تكون كل أيقونة وكلمة عبارة عن صندوق نص مستقل بأدوات كانفا المعتادة:<br>
+          1. في متصفحك، اضغط <b>Ctrl + P</b> (أو <b>Cmd + P</b> على ماك).<br>
+          2. اختر <b>حفظ كـ PDF (Save as PDF)</b> بأعلى دقة.<br>
+          3. اسحب ملف الـ PDF وأفلته مباشرة في <b>Canva</b>.<br>
+          4. يقوم كانفا فوراً بتفكيك الصفحة إلى نصوص متجهة وأيقونات مستقلة تضغط عليها مرتين لتعديل أي حرف!
+        </p>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <button onclick="toggleCanvaFrameMode()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all">
+          📐 تبديل مقاس العرض إلى 16:9 شاشة كانفا
+        </button>
+        <button onclick="closeCanvaModal()" class="px-5 py-2 rounded-xl bg-brand-cyan text-black text-xs font-bold">إغلاق</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // --- 1. Sound Synthesis via Web Audio API (Zero External Files) ---
+    function playTapAudio() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+
+        // Synth Chime (Clean futuristic resonance)
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime); // A5 note
+        osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.12); // Ramp to A6
+
+        gain.gain.setValueAtTime(0.35, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start();
+        osc.stop(ctx.currentTime + 0.45);
+      } catch (err) {
+        console.warn('Audio not allowed yet:', err);
+      }
+    }
+
+    // --- 2. NFC Tap Simulator Interaction ---
+    let isPhoneActive = false;
+
+    function runNfcTapSimulation() {
+      const stand = document.getElementById('acrylicStand3D');
+      const ripple = document.getElementById('tapRippleRing');
+      const phoneIdle = document.getElementById('phoneScreenIdle');
+      const phoneActive = document.getElementById('phoneScreenActive');
+
+      // 1. Play synthesized tone
+      playTapAudio();
+
+      // 2. Trigger Radar Ripple
+      ripple.classList.remove('tap-ripple-active');
+      void ripple.offsetWidth; // trigger reflow
+      ripple.classList.add('tap-ripple-active');
+
+      // 3. Subtle physical bounce on the stand
+      stand.style.transform = 'rotateX(2deg) rotateY(0deg) scale(0.98)';
+      setTimeout(() => {
+        stand.style.transform = '';
+      }, 300);
+
+      // 4. Switch phone screen to active dining menu
+      isPhoneActive = true;
+      phoneIdle.classList.add('opacity-0', 'pointer-events-none');
+      phoneActive.classList.remove('opacity-0', 'pointer-events-none');
+
+      showToast(
+        currentLang === 'ar' ? 'تم استشعار NFC بنجاح! ⚡' : 'NFC Induction Detected! ⚡',
+        currentLang === 'ar' ? 'فتحت قائمة الطعام فوراً بدون أي تطبيق' : 'Dining menu opened in 0.28s without apps'
+      );
+    }
+
+    // --- 3. Live Visual In-Place Editor (Modify Any Text or Number) ---
+    let isVisualEditOn = false;
+
+    function toggleLiveVisualEditor() {
+      isVisualEditOn = !isVisualEditOn;
+      const body = document.body;
+      const btn = document.getElementById('toggleEditModeBtn');
+      const label = document.getElementById('editModeBtnLabel');
+      const bar = document.getElementById('visualEditorBar');
+
+      // Elements to make editable
+      const textNodes = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, #standRestaurantName, #standBranchText, #standTableBadge, #standTapInstruction, #standTapSubtext');
+
+      if (isVisualEditOn) {
+        body.classList.add('visual-edit-mode');
+        btn.classList.remove('bg-amber-500/15', 'text-amber-300', 'border-amber-500/40');
+        btn.classList.add('bg-amber-400', 'text-black', 'border-amber-300');
+        label.textContent = currentLang === 'ar' ? 'إيقاف وضع التحرير' : 'Exit Visual Editor';
+
+        bar.classList.remove('translate-y-28', 'opacity-0', 'pointer-events-none');
+        bar.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+
+        textNodes.forEach(el => {
+          if (!el.closest('#visualEditorBar') && !el.closest('#toggleEditModeBtn') && !el.closest('#toastNotification') && !el.closest('#canvaModal') && !el.closest('#customizerModal')) {
+            el.setAttribute('contenteditable', 'true');
+            el.setAttribute('spellcheck', 'false');
+          }
+        });
+
+        showToast(
+          currentLang === 'ar' ? 'وضع التحرير المباشر مفعل!' : 'Live In-Place Editor ON',
+          currentLang === 'ar' ? 'انقر على أي نص، كلمة، أو رقم لتعديله مباشرة' : 'Click on any headline or label to edit directly'
+        );
+      } else {
+        body.classList.remove('visual-edit-mode');
+        btn.classList.remove('bg-amber-400', 'text-black', 'border-amber-300');
+        btn.classList.add('bg-amber-500/15', 'text-amber-300', 'border-amber-500/40');
+        label.textContent = currentLang === 'ar' ? 'وضع التحرير المباشر (تعديل أي نص)' : 'Live Visual Edit Mode';
+
+        bar.classList.add('translate-y-28', 'opacity-0', 'pointer-events-none');
+        bar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+
+        textNodes.forEach(el => el.removeAttribute('contenteditable'));
+
+        showToast(
+          currentLang === 'ar' ? 'تم حفظ التعديلات' : 'Edits Saved',
+          currentLang === 'ar' ? 'يمكنك الآن تضمينه أو تحميله' : 'You can now embed or export'
+        );
+      }
+    }
+
+    // Save customized code and download directly
+    function saveAndDownloadCustomHTML() {
+      const wasActive = isVisualEditOn;
+      if (wasActive) toggleLiveVisualEditor();
+
+      const docContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([docContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'nexus-acrylic-stand-custom.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      if (wasActive) setTimeout(toggleLiveVisualEditor, 300);
+
+      showToast(
+        currentLang === 'ar' ? 'تم تنزيل ملف الويب المعدل!' : 'Modified File Downloaded!',
+        currentLang === 'ar' ? 'الملف جاهز بجميع كتاباتك وتعديلاتك الخاصة' : 'Ready to be hosted or embedded in Canva'
+      );
+    }
+
+    function restoreOriginalTexts() {
+      location.reload();
+    }
+
+    // --- 4. Language Dictionaries & Switcher (AR / EN) ---
+    let currentLang = 'ar';
+
+    const translations = {
+      ar: {
+        nav_subtitle: 'استاند أكريليك ذكي للمطاعم والمقاهي السعودية',
+        btn_customize: 'تخصيص الهوية',
+        btn_canva_embed: 'تضمين وتصدير في كانفا',
+        hero_badge: 'الجيل الجديد من تجربة الضيافة الذكية في السعودية',
+        hero_title: 'استاند طاولة أكريليكي ذكي بنظام NFC & QR Code',
+        hero_desc: 'ارتقِ بتجربة عملاء مطعمك أو مقهاك بدون تطبيقات أو تسجيل دخول. لمسة واحدة بالجوال تفتح قائمة الطعام، تطلب فوراً، وترسل الفاتورة لنظام الكاشير (Foodics / Geidea) وخدمات الدفع السريع مدى و Apple Pay.',
+        btn_simulate_tap: 'محاكاة لمس الجوال للاستاند (Tap NFC)',
+        spec_acrylic: 'أكريليك مصبوب عالي الشفافية 4mm',
+        spec_uv: 'طباعة UV فائقة الوضوح مقاومة للخدش',
+        phone_idle_title: 'في انتظار تقريب الجوال...',
+        phone_idle_desc: 'اضغط على زر "محاكاة لمس الجوال للاستاند" لتشاهد التجربة الحية فوراً',
+        sync_title: 'تكامل سحابي متزامن مع منصات المطاعم والكاشير في السعودية',
+        calc_title: 'كم ستوفر شهرياً باستخدام استاندات NFC الذكية؟',
+        calc_desc: 'حرّك المؤشرات لمعرفة التوفير المتوقع في أجور الويترز وزيادة سرعة دوران الطاولات.',
+        calc_tables_label: 'عدد الطاولات في الصالة:',
+        calc_orders_label: 'متوسط عدد الطلبات لكل طاولة يومياً:',
+        calc_ticket_label: 'متوسط قيمة الفاتورة (ر.س):',
+        stat_saving_money: 'توفير شهري مباشر في العمالة',
+        stat_speed: 'زيادة سرعة تفريغ الطاولة',
+        stat_sales_boost: 'العائد الإضافي على المبيعات',
+        stat_sales_desc: 'بسبب سهولة إعادة الطلب الفوري للقهوة والحلى',
+        feat_chip_title: 'شريحة NXP NTAG424 DNA',
+        feat_chip_desc: 'أعلى معايير الأمان والتشفير الديناميكي ضد النسخ والقرصنة، مع عمر تشغيلي يتجاوز 10 سنوات بدون بطاريات.',
+        feat_mat_title: 'أكريليك كريستالي مصبوب',
+        feat_mat_desc: 'حواف مشطوفة ومصقولة بالألماس مع مقاومة تامة للماء، القهوة الساخنة، ومواد التعقيم الكيميائية اليومية.',
+        feat_speed_title: 'استجابة فائقة السرعة < 0.3 ثانية',
+        feat_speed_desc: 'لا يحتاج العميل لفتح الكاميرا أو تحميل أي تطبيق؛ مجرد ملامسة الهاتف للاستاند تفتح صفحة الطلب فوراً.'
+      },
+      en: {
+        nav_subtitle: 'Smart Acrylic Table Stand for KSA F&B Venues',
+        btn_customize: 'Customize Identity',
+        btn_canva_embed: 'Embed & Export in Canva',
+        hero_badge: 'Next-Gen Smart Hospitality Experience in Saudi Arabia',
+        hero_title: 'Smart Acrylic Desk Stand with Instant NFC & QR',
+        hero_desc: 'Elevate your guest dining experience with zero app downloads. A single smartphone tap opens the menu, routes orders to Foodics & Geidea, and enables instant Apple Pay & Mada checkout.',
+        btn_simulate_tap: 'Simulate Smartphone Tap (NFC)',
+        spec_acrylic: 'Ultra-Clear 4mm Cast Acrylic',
+        spec_uv: 'Scratch-Proof High-Def UV Print',
+        phone_idle_title: 'Awaiting phone tap proximity...',
+        phone_idle_desc: 'Click "Simulate Smartphone Tap" above to trigger the live dining menu',
+        sync_title: 'Synchronized Cloud Engine for Saudi POS & Food Delivery',
+        calc_title: 'How Much Will You Save Monthly with NFC Stands?',
+        calc_desc: 'Adjust the sliders to view projected labor savings and table turnover increases in SAR.',
+        calc_tables_label: 'Dining Table Count:',
+        calc_orders_label: 'Avg Daily Orders Per Table:',
+        calc_ticket_label: 'Avg Ticket Value (SAR):',
+        stat_saving_money: 'Direct Monthly Labor Savings',
+        stat_speed: 'Table Turnover Increase',
+        stat_sales_boost: 'Incremental Sales Lift',
+        stat_sales_desc: 'Driven by frictionless 1-tap reorders for specialty coffee & desserts',
+        feat_chip_title: 'NXP NTAG424 DNA Crypto Chip',
+        feat_chip_desc: 'Military-grade dynamic AES-128 encryption preventing cloning, with a 10-year battery-free lifespan.',
+        feat_mat_title: 'Crystal Cast Acrylic',
+        feat_mat_desc: 'Diamond-polished beveled edges resistant to hot spills, drops, and daily chemical cleaning agents.',
+        feat_speed_title: 'Ultra-Fast Tap Speed < 0.3s',
+        feat_speed_desc: 'Zero app friction. Guests tap and order immediately without scanning or registration bottlenecks.'
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      const html = document.documentElement;
+      const langFlag = document.getElementById('langFlag');
+      const langText = document.getElementById('langText');
+
+      if (currentLang === 'en') {
+        html.setAttribute('dir', 'ltr');
+        html.setAttribute('lang', 'en');
+        document.body.classList.remove('font-arabic');
+        document.body.classList.add('font-sans');
+        langFlag.textContent = '🇬🇧';
+        langText.textContent = 'العربية';
+      } else {
+        html.setAttribute('dir', 'rtl');
+        html.setAttribute('lang', 'ar');
+        document.body.classList.remove('font-sans');
+        document.body.classList.add('font-arabic');
+        langFlag.textContent = '🇸🇦';
+        langText.textContent = 'English';
+      }
+
+      // Update keyed elements
+      const elements = document.querySelectorAll('[data-key]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[currentLang][key]) {
+          el.textContent = translations[currentLang][key];
+        }
+      });
+
+      updateCalculator();
+    }
+
+    // --- 5. Interactive ROI Calculator Logic ---
+    function updateCalculator() {
+      const tables = parseInt(document.getElementById('tablesSlider').value);
+      const orders = parseInt(document.getElementById('ordersSlider').value);
+      const ticket = parseInt(document.getElementById('ticketSlider').value);
+
+      document.getElementById('tablesValueDisplay').textContent = currentLang === 'ar' ? `${tables} طاولة` : `${tables} Tables`;
+      document.getElementById('ordersValueDisplay').textContent = currentLang === 'ar' ? `${orders} طلبات` : `${orders} Orders`;
+      document.getElementById('ticketValueDisplay').textContent = currentLang === 'ar' ? `${ticket} ر.س` : `${ticket} SAR`;
+
+      // Monthly calculations
+      const monthlySavings = Math.round(tables * 450); // Labor optimization estimation in SAR
+      const extraRevenue = Math.round(tables * orders * ticket * 30 * 0.08); // 8% reorder lift
+
+      document.getElementById('statMonthlySavings').textContent = currentLang === 'ar' ? `${monthlySavings.toLocaleString()} ر.س` : `${monthlySavings.toLocaleString()} SAR`;
+      document.getElementById('statExtraSales').textContent = currentLang === 'ar' ? `+${extraRevenue.toLocaleString()} ر.س` : `+${extraRevenue.toLocaleString()} SAR`;
+    }
+
+    // --- 6. Customizer Modal Logic ---
+    function openCustomizerModal() {
+      document.getElementById('customizerModal').classList.remove('hidden');
+      document.getElementById('customizerModal').classList.add('flex');
+    }
+    function closeCustomizerModal() {
+      document.getElementById('customizerModal').classList.add('hidden');
+      document.getElementById('customizerModal').classList.remove('flex');
+    }
+    function applyCustomizerChanges() {
+      const brand = document.getElementById('inputBrandName').value;
+      const branch = document.getElementById('inputBranchName').value;
+      const table = document.getElementById('inputTableNum').value;
+      const icon = document.getElementById('inputIconSelect').value;
+
+      document.getElementById('standRestaurantName').textContent = brand;
+      document.getElementById('standBranchText').textContent = branch;
+      document.getElementById('standTableBadge').textContent = table;
+      document.getElementById('standLogoIcon').textContent = icon;
+      document.getElementById('phoneRestaurantTitle').textContent = brand;
+      document.getElementById('phoneTableTitle').textContent = `متصل بـ ${table}`;
+
+      closeCustomizerModal();
+      showToast(
+        currentLang === 'ar' ? 'تم تحديث هوية الاستاند' : 'Stand Branding Applied',
+        currentLang === 'ar' ? 'تم تطبيق الشعار والبيانات الجديدة بنجاح' : 'New name and table updated on display'
+      );
+    }
+
+    function setAccentGlow(hex) {
+      document.getElementById('standTableBadge').style.borderColor = hex;
+      document.getElementById('standTableBadge').style.color = hex;
+      document.getElementById('standLogoIcon').style.borderColor = hex;
+      document.getElementById('standLogoIcon').style.color = hex;
+    }
+
+    // --- 7. Canva Modal & 16:9 Frame Mode ---
+    function openCanvaModal() {
+      document.getElementById('canvaModal').classList.remove('hidden');
+      document.getElementById('canvaModal').classList.add('flex');
+    }
+    function closeCanvaModal() {
+      document.getElementById('canvaModal').classList.add('hidden');
+      document.getElementById('canvaModal').classList.remove('flex');
+    }
+    function toggleCanvaFrameMode() {
+      const frame = document.getElementById('mainFrame');
+      frame.classList.toggle('canva-presentation-frame');
+      closeCanvaModal();
+      showToast(
+        currentLang === 'ar' ? 'وضع شاشة كانفا 16:9' : 'Canva 16:9 Frame Toggled',
+        currentLang === 'ar' ? 'تم ضبط الإطار ليناسب شرائح العروض التقديمية' : 'Optimized for slides screenshot or presentation mode'
+      );
+    }
+
+    // Copy full HTML code to clipboard
+    function copyFullCodeToClipboard() {
+      const fullCode = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const dummy = document.createElement("textarea");
+      document.body.appendChild(dummy);
+      dummy.value = fullCode;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+
+      showToast(
+        currentLang === 'ar' ? 'تم نسخ كود الويب كاملاً!' : 'Full Code Copied!',
+        currentLang === 'ar' ? 'يمكنك الآن لصقه وتضمينه في كانفا أو استضافتك' : 'Ready to paste in your embed code block or web host'
+      );
+    }
+
+    // Toast Utility
+    function showToast(title, msg) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMessage').textContent = msg;
+
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      }, 3500);
+    }
+
+    // Init
+    window.onload = function() {
+      updateCalculator();
+    };
+  </script>
+
+</body></html>
